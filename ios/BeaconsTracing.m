@@ -16,4 +16,9 @@ RCT_REMAP_METHOD(multiply,
   resolve(result);
 }
 
+RCT_REMAP_METHOD(addEvent:(NSString *)name location:(NSString *)location)
+{
+  RCTLogInfo(@"Pretending to create an event %@ at %@", name, location);
+}
+
 @end
