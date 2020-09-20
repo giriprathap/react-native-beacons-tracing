@@ -18,12 +18,12 @@ RCT_REMAP_METHOD(multiply,
   resolve(result);
 }
 
-RCT_EXPORT_METHOD(initialiseFramework)
+RCT_REMAP_METHOD(initialiseFramework)
 {
   [[GimbalInitializer sharedInstance] intialiseGimbalFramework];
 }
 
-RCT_EXPORT_METHOD(findEvents:(RCTResponseSenderBlock)callback)
+RCT_REMAP_METHOD(findEvents:(RCTResponseSenderBlock)callback)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
 
