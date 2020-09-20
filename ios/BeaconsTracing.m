@@ -1,4 +1,6 @@
 #import "BeaconsTracing.h"
+#import <Gimbal/Gimbal.h>
+#import "GimbalInitializer.h"
 
 @implementation BeaconsTracing
 
@@ -14,6 +16,20 @@ RCT_REMAP_METHOD(multiply,
   NSNumber *result = @([a floatValue] * [b floatValue]);
 
   resolve(result);
+}
+
+RCT_EXPORT_METHOD(initialiseFramework)
+{
+  [[GimbalInitializer sharedInstance] intialiseGimbalFramework];
+}
+
+RCT_EXPORT_METHOD(findEvents:(RCTResponseSenderBlock)callback)
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+
+  callback(@[[NSNull null], [[GimbalInitializer sharedInstance] sendEvents]]);
+    });
+
 }
 
 RCT_REMAP_METHOD(addEvent:(NSString *)name location:(NSString *)location)
